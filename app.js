@@ -1,14 +1,20 @@
-const http = require('http');
+const express = require("express");
 const port = 3330;
 
-const handler = (require, response) => {
-    console.log('new user!')
-    response.end('Hello node')
+const genereteTitle = () => {
+  return "Node JS";
 };
 
-const server = http.createServer(handler);
+const app = express();
+app.set("view engine", "hbs");
 
-server.listen(port, () => {
+const title = genereteTitle();
 
-    console.log('server is running..')
-})
+app.get("/", (req, res) => {
+  res.render("index", {
+    pageTitle: title,
+    pageBody: "Hello Node",
+  });
+});
+
+app.listen(port);
