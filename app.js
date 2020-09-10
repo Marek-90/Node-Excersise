@@ -1,5 +1,5 @@
 const express = require("express");
-const port = 3330;
+const port = process.env.PORT || 3330;
 
 const genereteTitle = () => {
   return "Node JS";
